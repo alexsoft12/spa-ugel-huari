@@ -1,22 +1,21 @@
 <template>
-  <div class="container">
-    <div class="form-signin">
-      <form @submit.prevent="login">
-        <h1 class="h3 mb-3 fw-normal">Inicio de sesión <small></small></h1>
-        <div class="form-floating">
-          <input type="email" class="form-control" id="email" v-model="form.email" placeholder="Correo..."/>
-          <label for="email">Correo</label>
-        </div>
-        <div class="form-floating">
-          <input type="password" class="form-control" id="password" v-model="form.password" placeholder="Cotraseña"/>
-          <label for="password">Contraseña</label>
-        </div>
-        <button type="submit" class="w-100 btn btn-lg btn-primary mt-3">INGRESAR</button>
-        <FlashMessage :error="error" />
-      </form>
-    </div>
-
+  <div class="form-signin">
+    <form @submit.prevent="login">
+      <h1 class="h3 mb-3 fw-normal">Inicio de sesión <small></small></h1>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="email" v-model="form.email" placeholder="Correo..."/>
+        <label for="email">Correo</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="password" v-model="form.password" placeholder="Cotraseña"/>
+        <label for="password">Contraseña</label>
+      </div>
+      <button type="submit" class="w-100 btn btn-lg btn-primary mt-3">INGRESAR</button>
+      <FlashMessage :error="error"/>
+    </form>
   </div>
+
+
 </template>
 
 <script>

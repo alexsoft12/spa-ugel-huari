@@ -1,5 +1,7 @@
 <template>
-  <LoginForm/>
+  <div class="container">
+    <LoginForm/>
+  </div>
 </template>
 
 <script>
