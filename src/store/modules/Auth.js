@@ -30,14 +30,17 @@ export const actions = {
         return AuthService.logout()
             .then(() => {
                 commit('setUser', null);
-                router.push('/login');
+                dispatch("setGuest", {value: "isGuest"});
+                if (router.currentRoute.name !== 'login') {
+                    router.push('/login');
+                }
             })
             .catch(error => {
                 commit('setError', getError(error));
-                dispatch('alert/error', error, {root: true});
+                // dispatch('alert/error', error, {root: true});
             });
     },
-    async getUser({commit}) {
+    async getAuthUser({commit}) {
         commit('setLoading', true);
         try {
             const response = await AuthService.getUser();

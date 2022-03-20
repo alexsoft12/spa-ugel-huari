@@ -11,7 +11,6 @@ authService.interceptors.response.use(
         return response;
     },
     error => {
-        // console.log(error);
         if (
             error.response &&
             [401, 419].includes(error.response.status) &&
@@ -33,6 +32,6 @@ export default {
         return authService.post("/logout");
     },
     getUser() {
-        return authService.get("/users/auth");
+        return authService.get("/api/users/auth");
     },
 }
