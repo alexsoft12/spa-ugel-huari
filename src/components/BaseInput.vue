@@ -1,24 +1,24 @@
 <template>
-<div class="form-floating mb-3">
-
-  <input
-      :id="name"
-      :type="type"
-      :value="value"
-      :required="required"
-      @input="updateValue"
-      :placeholder="placeholder"
-      :autocomplete="autocomplete"
-      class="form-control"
-         />
-  <label :for="name"
-         v-if="label">
-    {{ label }}
-  </label>
-
-</div>
+  <div>
+    <label
+        :for="name"
+        :class="{ 'sr-only': !showLabel }"
+        v-if="label"
+    >
+      {{ label }}
+    </label>
+    <input
+        :id="name"
+        :type="type"
+        :value="value"
+        :required="required"
+        @input="updateValue"
+        :placeholder="placeholder"
+        :autocomplete="autocomplete"
+        class="form-control"
+    />
+  </div>
 </template>
-
 
 <script>
 export default {

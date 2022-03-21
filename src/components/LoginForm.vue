@@ -10,7 +10,7 @@
         <input type="password" class="form-control" id="password" v-model="form.password" placeholder="Cotraseña"/>
         <label for="password">Contraseña</label>
       </div>
-      <button type="submit" class="w-100 btn btn-lg btn-primary mt-3">INGRESAR</button>
+      <button type="submit" class="w-100 btn btn-lg btn-primary my-3">INGRESAR</button>
       <FlashMessage :error="error"/>
     </form>
   </div>

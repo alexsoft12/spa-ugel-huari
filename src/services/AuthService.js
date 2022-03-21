@@ -11,6 +11,7 @@ authService.interceptors.response.use(
         return response;
     },
     error => {
+        conosle.log(error);
         if (
             error.response &&
             [401, 419].includes(error.response.status) &&

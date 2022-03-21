@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
+import {RouterLink, RouterView} from "vue-router";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 </script>
@@ -8,7 +8,9 @@ import Footer from "./components/Footer.vue";
   <Header/>
   <Footer/>
 
-  <RouterView />
+  <RouterView/>
 </template>
 
-
+<style>
+@import "../node_modules/@syncfusion/ej2-vue-grids/styles/bootstrap5.css";
+</style>

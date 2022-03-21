@@ -3,10 +3,16 @@
     <div class="position-sticky pt-3">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
+
+          <RouterLink class="nav-link active" aria-current="page" to="/authorizations">
             <span data-feather="home"></span>
-            Dashboard
-          </a>
+            Autorizaciones
+          </RouterLink>
+
+          <RouterLink class="nav-link" to="/authorizations">
+            <span data-feather="home"></span>
+            Autorizaciones
+          </RouterLink>
         </li>
 
       </ul>
