@@ -22,7 +22,7 @@
         <e-column field='fecha_inicio' headerText='Fecha inicio' width=150></e-column>
       </e-columns>
     </ejs-grid>
-    <BasePagination  action="authorization/paginated" :links="links" :meta="meta" v-if="meta && meta.last_page > 1"/>
+    <BasePagination :action="paginated" :links="links" :meta="meta" v-if="meta && meta.last_page > 1"/>
   </Main>
 
 </template>
@@ -30,7 +30,10 @@
 <script>
 import Main from "../components/admin/Main.vue";
 import BasePagination from "../components/admin/BasePagination.vue";
-
+import {useAuthorizationStore} from "../store/authorization";
+import FlashMessage from "../components/FlashMessage.vue";
+import AuthorizationForm from "../components/admin/AuthorizationForm.vue";
+import {storeToRefs} from "pinia";
 import {
   GridComponent,
   ColumnsDirective,
@@ -44,10 +47,6 @@ import {
   PdfExport,
   ExcelExport
 } from '@syncfusion/ej2-vue-grids';
-import store from "../store";
-import {mapGetters} from "vuex";
-import FlashMessage from "../components/FlashMessage.vue";
-import AuthorizationForm from "../components/admin/AuthorizationForm.vue";
 
 export default {
   name: "AuthorizationsView",
@@ -59,6 +58,19 @@ export default {
     'ejs-grid': GridComponent,
     'e-columns': ColumnsDirective,
     'e-column': ColumnDirective
+  },
+  setup() {
+    const authorizationStore = useAuthorizationStore();
+    const {authorizations, loading, error, links, meta} = storeToRefs(authorizationStore);
+    const   { paginated } = authorizationStore ;
+    return {
+      authorizations,
+      loading,
+      error,
+      links,
+      meta,
+      paginated,
+    }
   },
   data() {
     return {
@@ -76,12 +88,10 @@ export default {
   provide: {
     grid: [Page, Edit, Toolbar, Group, Sort, ContextMenu, PdfExport, ExcelExport]
   },
-  computed: {
-    ...mapGetters("authorization", ["loading", "error", "authorizations", "meta", "links"]),
-  },
   beforeRouteEnter(to, from, next) {
+    const authorizationStore = useAuthorizationStore();
     const currentPage = parseInt(to.query.page) || 1;
-    store.dispatch("authorization/fetchAuthorizations", currentPage).then(() => {
+    authorizationStore.fetchAuthorizations(currentPage).then(() => {
       to.query.page = currentPage;
       next();
     });

@@ -1,9 +1,11 @@
-export default function auth({to, next, store}) {
+import {useAuthStore} from "../store/auth";
+export default function auth({to, next}) {
     const loginQuery = {path: "/login", query: {redirect: to.fullPath}};
+    const authStore = useAuthStore();
 
-    if (!store.getters["auth/authUser"]) {
-        store.dispatch("auth/getAuthUser").then(() => {
-            if (!store.getters["auth/authUser"]) next.next(loginQuery);
+    if (!authStore.authUser) {
+        authStore.getAuthUser().then(() => {
+            if (!authStore.authUser) next.next(loginQuery);
             else next.next();
         });
     } else {

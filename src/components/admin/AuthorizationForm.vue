@@ -11,7 +11,7 @@
             class="mb-2"
             placeholder="DNI"
         />
-        <BaseBtn type="button" text="Buscar"/>
+        <BaseBtn type="button" text="Buscar" />
       </div>
     </div>
 

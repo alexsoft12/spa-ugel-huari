@@ -1,6 +1,6 @@
 import * as API from '../services/API';
 
-export default {
+export const authorizationService = {
     getAuthorizations(page) {
         return API.apiClient.get('/authorizations?page=' + page);
     },

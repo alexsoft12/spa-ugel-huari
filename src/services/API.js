@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from '../store';
+import {useAuthStore} from "../store/auth";
 
 export const apiClient = axios.create({
     baseURL: import.meta.env.VITE_APP_API_URL + '/api',
@@ -9,13 +9,14 @@ export const apiClient = axios.create({
 apiClient.interceptors.response.use(
     response => response,
     error => {
+        const authStore = useAuthStore()
         if (
             error.response &&
             [401, 419].includes(error.response.status) &&
-            store.getters["auth/authUser"] &&
-            !store.getters["auth/guest"]
+            authStore.authUser &&
+            !authStore.guest
         ) {
-            store.dispatch("auth/logout");
+            authStore.logout();
         }
         return Promise.reject(error);
     }

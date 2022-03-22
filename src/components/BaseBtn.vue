@@ -1,7 +1,7 @@
 <template>
   <button
       :type="type"
-      v-on="$listeners"
+
       class="btn btn-primary"
   >
     {{ text }}

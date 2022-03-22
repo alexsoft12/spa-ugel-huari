@@ -22,6 +22,7 @@
 import authService from "../services/AuthService";
 import {getError} from "../utils/helpers";
 import FlashMessage from "../components/FlashMessage.vue";
+import {useAuthStore} from "../store/auth";
 
 export default {
   components: {
@@ -36,6 +37,10 @@ export default {
       error: null
     }
   },
+  setup(){
+    const authStore = useAuthStore();
+    return { authStore}
+  },
   methods: {
     async login() {
       const payload = {
@@ -46,9 +51,9 @@ export default {
       try {
         await authService.login(payload);
 
-        const authUser = await this.$store.dispatch("auth/getAuthUser");
+        const authUser = await this.authStore.getAuthUser();
         if (authUser) {
-          this.$store.dispatch("auth/setGuest", {value: "isNotGuest"});
+          this.authStore.setGuest({value: "isNotGuest"});
           this.$router.push("/dashboard");
         } else {
           const error = Error(

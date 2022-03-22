@@ -1,8 +1,8 @@
 import {createRouter, createWebHistory} from "vue-router";
 import middlewarePipeline from "./middlewarePipeline";
-import store from "../store";
 import guest from "../middleware/guest";
 import auth from "../middleware/auth";
+
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,9 +56,9 @@ const router = createRouter({
     },
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to,from,next) => {
     const middleware = to.meta.middleware || [];
-    const context = {to, from, next, store,};
+    const context = {to, from, next};
 
     if (!middleware) {
         return next();

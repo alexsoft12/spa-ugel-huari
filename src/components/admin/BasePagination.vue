@@ -64,7 +64,7 @@
 export default {
   props: {
     action: {
-      type: String,
+      type: Function,
       required: true,
     },
     path: {
@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     firstPage() {
-      this.$store.dispatch(this.action, this.links.first).then(() => {
+      this.action(this.links.first).then(() => {
         if (this.path) {
           this.$router.push({
             path: this.path,
@@ -92,7 +92,7 @@ export default {
       });
     },
     prevPage() {
-      this.$store.dispatch(this.action, this.links.prev).then(() => {
+      this.action(this.links.prev).then(() => {
         if (this.path) {
           this.$router.push({
             path: this.path,
@@ -102,7 +102,8 @@ export default {
       });
     },
     nextPage() {
-      this.$store.dispatch(this.action, this.links.next).then(() => {
+
+      this.action(this.links.next).then(() => {
         if (this.path) {
           this.$router.push({
             path: this.path,
@@ -112,7 +113,7 @@ export default {
       });
     },
     lastPage() {
-      this.$store.dispatch(this.action, this.links.last).then(() => {
+      this.action(this.links.last).then(() => {
         if (this.path) {
           this.$router.push({
             path: this.path,

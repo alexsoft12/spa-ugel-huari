@@ -1,11 +1,16 @@
-export default function guest({next, store}) {
+import {useAuthStore} from "../store/auth";
+
+export default function guest({next}) {
     const storageItem = localStorage.getItem('guest');
-    if (storageItem === 'isNotGuest' && !store.getters['auth/authUser']) {
-        store.dispatch('auth/getAuthUser').then(() => {
-            if (store.getters['auth/authUser']) {
+    const authStore = useAuthStore();
+
+    //console.log(store.authUser)
+    if (storageItem === 'isNotGuest' && !authStore.authUser) {
+        authStore.getAuthUser().then(() => {
+            if (authStore.authUser) {
                 next.next({name: 'dashboard',});
             } else {
-                store.dispatch('auth/setGuest', {value: 'isGuest'});
+                authStore.setGuest({value: 'isGuest'});
                 next.next();
             }
         });

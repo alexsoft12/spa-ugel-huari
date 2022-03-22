@@ -34,14 +34,23 @@
 
 
 <script>
-import {mapGetters} from "vuex";
+
 import Logout from "./Logout.vue";
+import {useAuthStore} from "../store/auth";
+import { storeToRefs } from 'pinia'
+
 
 export default {
   name: 'Header',
   components: {Logout},
-  computed: {
-   ...mapGetters("auth", ["authUser", "isAdmin"])
+  setup() {
+    const  authStore = useAuthStore()
+    const { authUser, isAdmin } = storeToRefs(authStore)
+
+    return {
+      authUser,
+      isAdmin,
+    }
   }
 }
 </script>

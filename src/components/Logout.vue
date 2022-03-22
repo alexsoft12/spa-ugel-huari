@@ -7,13 +7,19 @@
 </template>
 
 <script>
+import {useAuthStore} from "../store/auth";
 export default {
   name: "Logout",
-  methods: {
-    logout() {
-      this.$store.dispatch("auth/logout");
+
+  setup() {
+    const  authStore = useAuthStore()
+    const {logout} = authStore
+
+    return {
+      logout
     }
-  }
+  },
+
 }
 </script>
 
