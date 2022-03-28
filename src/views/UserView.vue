@@ -1,5 +1,4 @@
 <template>
-
   <Main>
     <h1>Profile</h1>
   </Main>
@@ -10,11 +9,8 @@ import Main from "../components/admin/Main.vue";
 
 export default {
   name: "UserView",
-  components: {Main}
-
-}
+  components: { Main },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

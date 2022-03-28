@@ -1,21 +1,17 @@
 <template>
   <div>
-    <label
-        :for="name"
-        :class="{ 'sr-only': !showLabel }"
-        v-if="label"
-    >
+    <label :for="name" :class="{ 'sr-only': !showLabel }" v-if="label">
       {{ label }}
     </label>
     <input
-        :id="name"
-        :type="type"
-        :value="value"
-        :required="required"
-        @input="updateValue"
-        :placeholder="placeholder"
-        :autocomplete="autocomplete"
-        class="form-control"
+      :id="name"
+      :type="type"
+      :value="value"
+      :required="required"
+      @input="updateValue"
+      :placeholder="placeholder"
+      :autocomplete="autocomplete"
+      class="form-control"
     />
   </div>
 </template>

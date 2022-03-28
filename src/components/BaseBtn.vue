@@ -1,9 +1,5 @@
 <template>
-  <button
-      :type="type"
-
-      class="btn btn-primary"
-  >
+  <button :type="type" class="btn btn-primary">
     {{ text }}
   </button>
 </template>

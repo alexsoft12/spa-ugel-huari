@@ -1,20 +1,16 @@
 <template>
   <div class="container">
-    <LoginForm/>
+    <LoginForm />
   </div>
 </template>
 
 <script>
-
-
-import LoginForm from "../components/LoginForm.vue";
+import LoginForm from "@/components/LoginForm.vue";
 
 export default {
   components: {
     LoginForm,
   },
-
-
 };
 </script>
 
@@ -46,4 +42,3 @@ export default {
   border-top-right-radius: 0;
 }
 </style>
-

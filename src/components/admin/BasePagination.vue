@@ -10,20 +10,20 @@
         <ul class="pagination justify-content-end">
           <li class="page-item">
             <button
-                type="button"
-                @click="firstPage"
-                v-if="links.prev"
-                class="page-link"
+              type="button"
+              @click="firstPage"
+              v-if="links.prev"
+              class="page-link"
             >
               Primero
             </button>
           </li>
           <li class="page-item">
             <button
-                type="button"
-                @click="prevPage"
-                v-if="links.prev"
-                class="page-link"
+              type="button"
+              @click="prevPage"
+              v-if="links.prev"
+              class="page-link"
             >
               Anterior
             </button>
@@ -31,10 +31,10 @@
 
           <li class="page-item">
             <button
-                type="button"
-                @click="nextPage"
-                v-if="links.next"
-                class="page-link"
+              type="button"
+              @click="nextPage"
+              v-if="links.next"
+              class="page-link"
             >
               Siguiente
             </button>
@@ -42,10 +42,10 @@
 
           <li class="page-item">
             <button
-                type="button"
-                @click="lastPage"
-                v-if="links.next"
-                class="page-link"
+              type="button"
+              @click="lastPage"
+              v-if="links.next"
+              class="page-link"
             >
               Ultimo
             </button>
@@ -86,7 +86,7 @@ export default {
         if (this.path) {
           this.$router.push({
             path: this.path,
-            query: {page: 1},
+            query: { page: 1 },
           });
         }
       });
@@ -96,18 +96,17 @@ export default {
         if (this.path) {
           this.$router.push({
             path: this.path,
-            query: {page: this.meta.current_page - 1},
+            query: { page: this.meta.current_page - 1 },
           });
         }
       });
     },
     nextPage() {
-
       this.action(this.links.next).then(() => {
         if (this.path) {
           this.$router.push({
             path: this.path,
-            query: {page: this.meta.current_page + 1},
+            query: { page: this.meta.current_page + 1 },
           });
         }
       });
@@ -117,11 +116,11 @@ export default {
         if (this.path) {
           this.$router.push({
             path: this.path,
-            query: {page: this.meta.last_page},
+            query: { page: this.meta.last_page },
           });
         }
       });
     },
   },
-}
+};
 </script>

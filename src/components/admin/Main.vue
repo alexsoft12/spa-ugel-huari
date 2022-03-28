@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid mb-5">
     <div class="row">
-    <Sidebar/>
+      <Sidebar />
 
-  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <slot></slot>
-  </main>
-  </div>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <slot></slot>
+      </main>
+    </div>
   </div>
 </template>
 
@@ -14,10 +14,8 @@
 import Sidebar from "./Sidebar.vue";
 export default {
   name: "Main",
-  components: {Sidebar}
-}
+  components: { Sidebar },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
