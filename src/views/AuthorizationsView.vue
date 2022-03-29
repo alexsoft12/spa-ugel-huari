@@ -4,7 +4,7 @@
       <FlashMessage :error="error" v-if="error" key="error"/>
       <FlashMessage
           message="Cargando..."
-          v-if="loading && authorizations && !authorizations.length"
+          v-if="loading  || !authorizations.length"
           key="loading"
       />
       <CCard class="mb-4">
@@ -49,7 +49,7 @@
 
 <script setup>
 import AuthorizationTable from "../components/authorization/AuthorizationTable.vue";
-import AuthorizationForm from "../components/admin/AuthorizationForm.vue";
+import AuthorizationForm from "../components/authorization/AuthorizationForm.vue";
 import {useAuthorizationStore} from "@/store/authorization";
 import Pagination from "../components/Pagination.vue";
 import FlashMessage from "../components/FlashMessage.vue";

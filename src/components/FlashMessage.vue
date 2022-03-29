@@ -1,41 +1,41 @@
 <template>
   <div>
     <div
-      class="alert alert-warning alert-dismissible fade show"
-      role="alert"
-      v-if="message"
-      key="message"
+        class="alert alert-warning alert-dismissible fade show"
+        role="alert"
+        v-if="message"
+        key="message"
     >
       {{ message }}
       <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
       ></button>
     </div>
     <div
-      class="alert alert-warning alert-dismissible fade show"
-      role="alert"
-      v-if="error && getType(error) === 'string'"
-      key="error"
+        class="alert alert-warning alert-dismissible fade show"
+        role="alert"
+        v-if="error && getType(error) === 'string'"
+        key="error"
     >
       {{ error }}
       <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
       ></button>
     </div>
     <div
-      class="alert alert-warning alert-dismissible fade show"
-      role="alert"
-      v-if="getType(error) === 'object'"
-      key="error-list"
+        class="alert alert-warning alert-dismissible fade show"
+        role="alert"
+        v-if="getType(error) === 'object'"
+        key="error-list"
     >
       <ul>
-        <li v-for="key in errorKeys" :key="key">
+        <li v-for="key in errorKeys()" :key="key">
           <b class="fw-bold text-capitalize">{{ key | titleCase }}</b>
           <ul class="ms-2">
             <li v-for="(item, index) in getErrors(key)" :key="`${index}-error`">
@@ -45,48 +45,47 @@
         </li>
       </ul>
       <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
       ></button>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "FlashMessage",
-  props: {
-    message: {
-      type: String,
-      default: null,
-    },
-    error: {
-      type: [Object, String],
-      default: null,
-    },
+<script setup>
+import {computed} from 'vue'
+
+const props = defineProps({
+  message: {
+    type: String,
+    default: null,
   },
-  computed: {
-    errorKeys() {
-      if (!this.error || this.getType(this.error) === "string") {
-        return null;
-      }
-      return Object.keys(this.error);
-    },
+  error: {
+    type: [Object, String],
+    default: null,
   },
-  methods: {
-    getErrors(key) {
-      return this.error[key];
-    },
-    getType(obj) {
-      return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
-    },
-  },
-  filters: {
-    titleCase(value) {
-      return value.replace("_", " ");
-    },
-  },
-};
+})
+
+const errorKeys = computed(() => {
+
+  if (!this.error || this.getType(this.error) === "string") {
+    return null;
+  }
+  return Object.keys(this.error);
+});
+
+const titleCase = computed(() => {
+  return value.replace("_", " ");
+})
+
+const getErrors = (key) => {
+  return this.error[key];
+}
+const getType = (obj) => {
+  return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
+}
+
+
 </script>

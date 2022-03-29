@@ -18,11 +18,16 @@
 
 <script setup>
 import avatar from '@/assets/images/avatars/2.jpg'
-import { useAuthStore } from "@/store/auth";
-import { storeToRefs } from "pinia";
-const authStore = useAuthStore();
-const { authUser, isAdmin } = storeToRefs(authStore);
-const { logout } = authStore;
-</script>
+const props = defineProps({
+  logout:{
+    type: Function,
+    required: true
+  },
+  authUser:{
+    type: Object,
+    default: null,
+    required: true
+  }
+})
 
-<style scoped></style>
+</script>

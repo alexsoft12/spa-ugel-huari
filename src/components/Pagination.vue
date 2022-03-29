@@ -1,13 +1,25 @@
 <template>
   <CPagination aria-label="Page navigation example">
 
-    <CPaginationItem v-if="links && links.prev" @click="firstPage">Primero</CPaginationItem>
-    <CPaginationItem v-for="link in meta.links" @click="changePage(link )"
-                     :class="link.active === true ? 'active': '' ">
-      {{ quoToString(link.label) }}
-
+    <CPaginationItem
+        :disabled="!links.prev"
+        @click="firstPage">
+      Primero
     </CPaginationItem>
-    <CPaginationItem v-if="links && links.next" @click="lastPage">Último</CPaginationItem>
+
+    <CPaginationItem
+        v-for="link in meta.links"
+        @click="changePage(link )"
+        :active="link.active"
+        :disabled="!link.url">
+      {{ quoToString(link.label) }}
+    </CPaginationItem>
+
+    <CPaginationItem
+        :disabled="!links.next"
+        @click="lastPage">
+      Último
+    </CPaginationItem>
   </CPagination>
 </template>
 

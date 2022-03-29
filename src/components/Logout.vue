@@ -4,20 +4,12 @@
   </a>
 </template>
 
-<script>
-import { useAuthStore } from "../store/auth";
-export default {
-  name: "Logout",
+<script setup>
+import {useAuthStore} from "../store/auth";
 
-  setup() {
-    const authStore = useAuthStore();
-    const { logout } = authStore;
+const authStore = useAuthStore();
+const {logout} = authStore;
 
-    return {
-      logout,
-    };
-  },
-};
 </script>
 
 <style scoped></style>

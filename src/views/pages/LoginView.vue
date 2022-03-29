@@ -4,17 +4,11 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import LoginForm from "@/components/LoginForm.vue";
-
-export default {
-  components: {
-    LoginForm,
-  },
-};
 </script>
 
-<style>
+<style scoped>
 .form-signin {
   width: 100%;
   max-width: 330px;

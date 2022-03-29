@@ -4,18 +4,16 @@
   </button>
 </template>
 
-<script>
-export default {
-  name: "BaseBtn",
-  props: {
-    type: {
-      type: String,
-      default: "submit",
-    },
-    text: {
-      type: String,
-      default: "Submit",
-    },
+<script setup>
+
+const props = defineProps({
+  type: {
+    type: String,
+    default: "submit",
   },
-};
+  text: {
+    type: String,
+    default: "Submit",
+  },
+});
 </script>
