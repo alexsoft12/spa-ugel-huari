@@ -14,8 +14,8 @@
 
 <script setup>
 import AppHeaderDropdownAccnt from "./AppHeaderDropdownAccnt.vue";
-import { useSidebarStore } from "@/store/sidebar";
-import { useAuthStore } from "@/store/auth";
+import { useSidebarStore } from "../store/sidebar";
+import { useAuthStore } from "../store/auth";
 import { storeToRefs } from "pinia";
 
 const sidebarStore = useSidebarStore();

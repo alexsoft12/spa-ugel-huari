@@ -1,6 +1,13 @@
 import {defineStore} from "pinia";
-import {authorizationService} from "@/services/AuthorizationService";
-import {getError} from "@/utils/helpers";
+import {authorizationService} from "../services/AuthorizationService";
+import {getError} from "../utils/helpers";
+
+function setPaginatedAuthorization(state, response) {
+    state.authorizations = response.data.data;
+    state.meta = response.data.meta;
+    state.links = response.data.links;
+    state.loading = false;
+}
 
 export const useAuthorizationStore = defineStore("authorization", {
     state: () => ({
@@ -10,6 +17,7 @@ export const useAuthorizationStore = defineStore("authorization", {
         loading: false,
         error: null,
     }),
+
     //actions
     actions: {
         async fetchAuthorizations(page) {
@@ -18,10 +26,7 @@ export const useAuthorizationStore = defineStore("authorization", {
             await authorizationService
                 .getAuthorizations(page)
                 .then((response) => {
-                    this.authorizations = response.data.data;
-                    this.meta = response.data.meta;
-                    this.links = response.data.links;
-                    this.loading = false;
+                    setPaginatedAuthorization(this, response)
                 })
                 .catch((error) => {
                     this.loading = false;
@@ -34,23 +39,28 @@ export const useAuthorizationStore = defineStore("authorization", {
             await authorizationService
                 .paginated(link)
                 .then((response) => {
-                    this.authorizations = response.data.data;
-                    this.meta = response.data.meta;
-                    this.links = response.data.links;
-                    this.loading = false;
+                    setPaginatedAuthorization(this, response)
                 })
                 .catch((error) => {
                     this.loading = false;
                     this.error = getError(error);
                 });
         },
-        // getters
-        getters: {
-            getAuthorizations: (state) => state.authorizations,
-            getMeta: (state) => state.meta,
-            getLinks: (state) => state.links,
-            getLoading: (state) => state.loading,
-            getError: (state) => state.error,
+        async create(data) {
+            await authorizationService
+                .create(data)
+                .then((response) => {
+                    // add new authorization to first the list
+                    this.authorizations.unshift(response.data.data);
+                    return response.data;
+                })
         },
+    }, // getters
+    getters: {
+        getAuthorizations: (state) => state.authorizations,
+        getMeta: (state) => state.meta,
+        getLinks: (state) => state.links,
+        getLoading: (state) => state.loading,
+        getError: (state) => state.error,
     },
 });

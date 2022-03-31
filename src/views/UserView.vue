@@ -1,16 +1,25 @@
 <template>
-  <Main>
-    <h1>Profile</h1>
-  </Main>
+    <div>
+        <h1>User</h1>
+<!--        <div>
+            <p>Name: {{ user.name }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p>Password: {{ user.password }}</p>
+        </div>-->
+    </div>
 </template>
 
-<script>
-import Main from "../components/admin/Main.vue";
+<script setup>
 
-export default {
-  name: "UserView",
-  components: { Main },
-};
+// use pinia
+import {useAuthStore} from "../store/auth";
+import {storeToRefs} from "pinia";
+
+const authStore = useAuthStore()
+
+const { authUser } =  storeToRefs(authStore)
+
+
 </script>
 
 <style scoped></style>

@@ -35,8 +35,8 @@
         key="error-list"
     >
       <ul>
-        <li v-for="key in errorKeys()" :key="key">
-          <b class="fw-bold text-capitalize">{{ key | titleCase }}</b>
+        <li v-for="key in errorKeys" :key="key">
+          <b class="fw-bold text-capitalize">{{ titleCase(key) }}</b>
           <ul class="ms-2">
             <li v-for="(item, index) in getErrors(key)" :key="`${index}-error`">
               {{ item }}
@@ -70,22 +70,21 @@ const props = defineProps({
 
 const errorKeys = computed(() => {
 
-  if (!this.error || this.getType(this.error) === "string") {
+  if (!props.error || getType(props.error) === "string") {
     return null;
   }
-  return Object.keys(this.error);
+  return Object.keys(props.error);
 });
 
-const titleCase = computed(() => {
+const titleCase = (value) => {
   return value.replace("_", " ");
-})
+}
 
 const getErrors = (key) => {
-  return this.error[key];
+  return props.error[key];
 }
 const getType = (obj) => {
   return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase();
 }
-
 
 </script>

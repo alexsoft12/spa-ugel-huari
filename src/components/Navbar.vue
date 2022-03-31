@@ -52,7 +52,7 @@
 
 <script setup>
 import Logout from "./Logout.vue";
-import { useAuthStore } from "@/store/auth";
+import { useAuthStore } from "../store/auth";
 import { storeToRefs } from "pinia";
 
 const authStore = useAuthStore();

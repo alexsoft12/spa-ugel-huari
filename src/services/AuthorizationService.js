@@ -7,7 +7,7 @@ export const authorizationService = {
   paginated(link) {
     return API.apiClient.get(link);
   },
-  createAuthorization(data) {
+  create(data) {
     return API.apiClient.post("/authorizations", data);
   },
 };

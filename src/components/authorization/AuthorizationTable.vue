@@ -18,7 +18,7 @@
           <CTableDataCell>{{ authorization.user }}</CTableDataCell>
           <CTableDataCell>{{ authorization.codigo_tercero }}</CTableDataCell>
           <CTableDataCell>{{ authorization.descuento_mensual }}</CTableDataCell>
-          <CTableDataCell>{{ authorization.nuemero_cuotas }}</CTableDataCell>
+          <CTableDataCell>{{ authorization.numero_cuotas }}</CTableDataCell>
           <CTableDataCell>{{ authorization.total_descuento }}</CTableDataCell>
           <CTableDataCell>{{ authorization.fecha_compromiso }}</CTableDataCell>
           <CTableDataCell>{{ authorization.fecha_inicio }}</CTableDataCell>

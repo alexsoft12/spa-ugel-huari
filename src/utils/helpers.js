@@ -15,8 +15,8 @@ export const getError = (error) => {
     console.error(error.response.status);
     console.error(error.response.headers);
   }
-  if (error.response.data && error.response.data.errors) {
-    return error.response.data.errors;
+  if (error.response.data && error.response.data.message) {
+    return error.response.data.data;
   }
 
   return errorMessage;

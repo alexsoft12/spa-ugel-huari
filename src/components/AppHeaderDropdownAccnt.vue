@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import avatar from '@/assets/images/avatars/2.jpg'
+import avatar from '../assets/images/avatars/2.jpg'
 const props = defineProps({
   logout:{
     type: Function,

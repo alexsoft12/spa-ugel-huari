@@ -40,7 +40,7 @@ import {ref} from 'vue'
 
 const form = ref({
   email: "yuleralex1@gmail.com",
-  password: "admin123",
+  password: "password",
 })
 let error = ref(null)
 let isLoading = ref(false)

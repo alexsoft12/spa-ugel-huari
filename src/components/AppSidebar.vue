@@ -14,7 +14,7 @@
 
 <script setup>
 import { AppSidebarNav } from "./AppSidebarNav";
-import { useSidebarStore } from "@/store/sidebar";
+import { useSidebarStore } from "../store/sidebar";
 import { storeToRefs } from "pinia";
 
 const store = useSidebarStore();
