@@ -13,8 +13,8 @@
 </template>
 
 <script setup>
-import AppSidebar from "@/components/AppSidebar.vue";
-import AppHeader from "@/components/AppHeader.vue";
+import AppSidebar from "../components/AppSidebar.vue";
+import AppHeader from "../components/AppHeader.vue";
 </script>
 
 <style scoped></style>

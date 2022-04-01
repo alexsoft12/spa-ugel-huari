@@ -7,6 +7,12 @@ export default [
   },
   {
     component: "CNavItem",
+    name: "Users",
+    to: "/users",
+    icon: "cil-people",
+  },
+  {
+    component: "CNavItem",
     name: "Authorizations",
     to: "/authorizations",
     icon: "cil-puzzle",

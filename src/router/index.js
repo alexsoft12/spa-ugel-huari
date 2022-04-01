@@ -60,6 +60,12 @@ const router = createRouter({
           meta: { middleware: [auth] },
           component: () =>
             import(/* webpackChunkName: "user" */ "../views/UserView.vue"),
+        },{
+          path: "/users",
+          name: "users",
+          meta: { middleware: [auth] },
+          component: () =>
+            import(/* webpackChunkName: "user" */ "../views/UsersView.vue"),
         },
         {
           path: "/authorizations",
